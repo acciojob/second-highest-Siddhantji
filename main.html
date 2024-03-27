@@ -9,9 +9,26 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+    if (arr.length < 2) {
+        return "Array should have at least two elements";
+    }
+
+    let largest = -Infinity; // Initialize largest as negative infinity
+    let secondLargest = -Infinity; // Initialize second largest as negative infinity
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            // If current element is greater than largest, update second largest and then largest
+            secondLargest = largest;
+            largest = arr[i];
+        } else if (arr[i] > secondLargest && arr[i] !== largest) {
+            // If current element is greater than second largest but not equal to largest, update second largest
+            secondLargest = arr[i];
+        }
+    }
+
+    return secondLargest;
+}
 
 		function Main() {
 			var n = prompt("Enter the number of elements");
